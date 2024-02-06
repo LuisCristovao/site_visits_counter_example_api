@@ -59,12 +59,18 @@ def count_visits():
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
-# @app.route('/getKey/<key>')
-# def getKey(key):
-	
-# 	resp = fl.Response(map[key])
-# 	resp.headers['Access-Control-Allow-Origin'] = '*'
-# 	return resp
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=argv[1])
+
+# to run on https create certificate and private key using in bash:
+# openssl req -x509 -newkey rsa:4096 -nodes -out certificate.pem -keyout privatekey.pem -days 365
+
+# to run server use: sudo python3 server.py 443 
+# 443 is the default port for https
+
+#Use this app.run instead and comment the previous to run the server in https:
+#-----------------------------#
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0', port=argv[1],ssl_context=('certificate.pem', 'privatekey.pem'))
+#-----------------------------#
